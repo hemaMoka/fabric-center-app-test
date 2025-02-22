@@ -16,7 +16,7 @@ import { MessageService } from 'primeng/api';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private _MessageService:MessageService,private _ProductsService:ProductsService) {
+  constructor(private _MessageService:MessageService,private _ProductsService:ProductsService)  {
 
   }
   categories: any[] = [

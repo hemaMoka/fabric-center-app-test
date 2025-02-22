@@ -1,3 +1,44 @@
 .hero{
   height: 500px;
 }
+.input_search {
+  padding: .75rem 2.5rem;
+  width: 100%;
+}
+
+i {
+  right: .75rem;
+}
+
+
+
+::ng-deep .filter_part .p-dropdown {
+  width: 100%;
+}
+
+
+.inner-card {
+  border: 1px solid #006f77;
+}
+
+
+.btn_ac {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.over {
+  cursor: pointer;
+  opacity: 0;
+}
+
+
+.img:hover .over {
+  opacity: 1 !important;
+}
