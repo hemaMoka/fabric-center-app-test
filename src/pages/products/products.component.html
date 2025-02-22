@@ -1,0 +1,108 @@
+<section class="py-5">
+  <div class="container">
+    <div class="head mb-5">
+      <h1>اشهر المنتجات</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-12  row mb-5 align-items-center">
+        <div class="col-md-5">
+          <label for="" class="mb-2">ابحث عن منتجك</label>
+          <div class="position-relative ">
+            <input class="input_search" type="text" (input)="handleSearch()" [(ngModel)]="searchText" pInputText placeholder=" ابحث يالاسم"  />
+            <i class="fi position-absolute top-50  translate-middle-y fi-rr-search"></i>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <label for="" class="mb-2">فلتر بالقسم</label>
+          <div class="position-relative ">
+            <p-dropdown
+              (onChange)="handleFilterCat($event)"
+            class="filter_part"
+              [options]="categories"
+              optionLabel="name"
+            placeholder="اختار قسم" />
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+
+    <div class="row g-3">
+
+      @for(product of products ; track product?.id){
+        <div class="col-md-3 product">
+          <div class="inner-card p-3 rounded-3">
+            <div (click)="handleShowCurrentProduct(product)" class="img  position-relative mb-2">
+              <div class="over  position-absolute d-flex justify-content-center align-items-center top-0 bg-opacity-50 bottom-0 start-0 end-0 bg-dark rounded-2">
+                <i class="fi fi-sr-eye text-white fs-2"></i>
+              </div>
+              <img class="w-100 rounded-2 " [src]="product?.img_path" alt="">
+            </div>
+            <div class="content">
+              <h3 class="fs-5 text-dark">{{product?.title?.split(" ")?.slice(0,3)?.join(" ")}}</h3>
+
+              <h6>{{product?.price|currency:"EGP "}}  لكل متر</h6>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between">
+              <p-button  class="auth" (click)="handleAddToCard(product)" [loading]="product?.isLoading" label="اضافة "></p-button>
+              <div class="d-flex align-items-center gap-2" >
+                <button (click)="incrementCount(product)" class="btn bg-custom-primary btn_ac">+</button>
+                <span>{{product?.count}}</span>
+                <button (click)="decrementCount(product)" class="btn bg-custom-primary btn_ac">-</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+
+  </div>
+</section>
+
+
+
+<p-dialog  [modal]="true" [(visible)]="showProductVisible" [style]="{ width: '60%' }">
+
+  <ng-template pTemplate="header">
+    <h4>{{currentProductToShow?.title}}</h4>
+  </ng-template>
+
+    <div class="container">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-md-4">
+          <img class="w-100" [src]="currentProductToShow?.img_path" alt="">
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-4">
+
+            <h2>{{currentProductToShow?.title}}</h2>
+            <p>
+              {{currentProductToShow?.desc}}
+            </p>
+            <h6>{{currentProductToShow?.price|currency:"EGP "}}  لكل متر</h6>
+          </div>
+
+
+            <div class="d-flex align-items-center justify-content-between">
+              <p-button  class="auth" [loading]="currentProductToShow?.isLoading" label="اضافة "></p-button>
+              <div class="d-flex align-items-center gap-2" >
+                <button (click)="incrementCount(currentProductToShow)" class="btn bg-custom-primary btn_ac">+</button>
+                <span>{{currentProductToShow?.count}}</span>
+                <button (click)="decrementCount(currentProductToShow)" class="btn bg-custom-primary btn_ac">-</button>
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+
+</p-dialog>

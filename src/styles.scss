@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+@import "@flaticon/flaticon-uicons/css/all/all";
+
+:root{
+  --primary-color:#006f77;
+}
+
+
+.bg-custom-primary{
+  background-color: var(--primary-color) !important;
+}
+.auth .p-button{
+  background-color: var(--primary-color) !important;
+  border-radius: .5rem;
+  -webkit-border-radius: .5rem;
+  -moz-border-radius: .5rem;
+  -ms-border-radius: .5rem;
+  -o-border-radius: .5rem;
+  padding: .5rem 1rem;
+  border: none;
+}

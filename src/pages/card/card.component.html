@@ -1,0 +1,40 @@
+<section class="py-5">
+  <div class="container">
+    <div class="row ">
+      <div class="col-md-8">
+        <div class="inner">
+          @for(card of userCard ; track card){
+            <div class="single_card mb-3">
+              <div class="row">
+                <div class="col-md-3">
+                  <img class="w-100 rounded-2" [src]="card?.product?.img_path" alt="">
+                </div>
+                <div class="col-md-7 d-flex flex-column gap-2">
+                  <h4 class="fs-5 m-0">{{card?.product?.title}}</h4>
+                  <p class="m-0">
+                    {{card?.product?.desc}}
+                  </p>
+                  <p class="m-0">السعر : {{card?.product?.price|currency:'EGP'}}</p>
+                  <p class="m-0">الكمية : {{card?.count}} متر</p>
+                  <p class="m-0">اجمالي السعر : {{card?.product?.price * card?.count |currency:'EGP'}}</p>
+                  <button (click)="deleteCardItem(card)" class="btn btn-danger w-25">ازاله</button>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="inner">
+          <p>اجمالي المنتجات : {{userCard.length}}</p>
+          <p>اجمالي السعر : {{getTotalPrice()|currency:'EGP '}} </p>
+          <p>اجمالي الخصم : {{0|currency:'EGP '}}</p>
+          <div class="line mb-4"></div>
+          <p>اجمالي المطلوب : {{getTotalPrice()|currency:'EGP '}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

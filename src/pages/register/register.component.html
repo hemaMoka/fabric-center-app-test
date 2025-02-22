@@ -1,0 +1,63 @@
+<section class="vh-100">
+  <div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+      <div class="col-md-6 border p-4 rounded-3">
+        <div class="inner">
+          <div class="head text-center fs-5 fw-medium mb-4">انشاء حساب جديد</div>
+          <form [formGroup]="loginForm" action="">
+            <div class="form-group mb-3">
+              <label for="email" class="mb-2 block text-base">الايميل </label>
+              <div>
+                <input formControlName="email" pInputText type="email" name="email" id="email" class="w-100"
+                  placeholder="ادخل عنوان بريدك الالكتروني " />
+              </div>
+              @if(loginForm.get('email')?.getError('required') && loginForm.get('email')?.touched){
+              <p class="text-danger m-0 p-2 text-sm">الايميل مطلوب </p>
+              }
+              @if(loginForm.get('email')?.getError('email')){
+              <p class="text-danger m-0 p-2 text-sm">ادخل ايميل صحيح </p>
+              }
+
+            </div>
+            <div class="form-group mb-3">
+              <label for="email" class="mb-2 block text-base">رقم الهاتف </label>
+              <div>
+                <input formControlName="phone" pInputText type="phone" name="phone" id="phone" class="w-100"
+                  placeholder="ادخل رقم الهاتف" />
+              </div>
+              @if(loginForm.get('phone')?.getError('required') && loginForm.get('phone')?.touched){
+              <p class="text-danger m-0 p-2 text-sm">رقم الهاتف مطلوب </p>
+              }
+            </div>
+
+
+
+            <div class="form-group mb-5">
+              <label for="email" class="form-control-label block mb-2 text-base">الباسورد</label>
+              <div class="position-relative">
+                <input formControlName="password" pInputText [type]="!showPassword() ? 'password':'text'"
+                  name="password" id="password" class="w-100" placeholder="ادخل كلمة السر" />
+                <i (click)="toggleShowPassword()" [ngClass]="showPassword() ? 'fi-rs-eye':'fi-rs-crossed-eye'"
+                  class="fi cursor-pointer showPass"></i>
+              </div>
+              @if(loginForm.get('password')?.errors && loginForm.get('password')?.touched){
+              @if(loginForm.get('password')?.getError('required')){
+              <p class="text-danger m-0 p-2 text-sm">كلمه السر مطلوبة </p>
+              }
+              }
+            </div>
+
+            <div class="mb-3">
+              <p-button (click)="handleLogin()" [loading]="loadingLogin()" [disabled]="loginForm.invalid" class="auth" label="انشاء حساب جديد">
+
+              </p-button>
+            </div>
+
+          </form>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>

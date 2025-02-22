@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg ">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-white" href="#">بيت القماش</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      @if(isLogin()){
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" [routerLink]="['/home']">الصفحة الرئسية</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="#"> من نحن</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" [routerLink]="['/products']"> المنتجات</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" [routerLink]="['/card']"> عربه التسوق</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" [routerLink]="['/contact-us']">تواصل معنا</a>
+          </li>
+        </ul>
+
+
+
+        <div class="me-4">
+          <button (click)="handleLogout()" class="btn btn-danger">تسجيل الخروج</button>
+        </div>
+      }@else {
+        <div class="me-auto">
+          <button [routerLink]="['/login']"   class="btn text-white">تسجيل الدخول</button>
+          <button [routerLink]="['/register']" class="btn text-white">انشاء حساب</button>
+        </div>
+      }
+
+    </div>
+  </div>
+</nav>
